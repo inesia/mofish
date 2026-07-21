@@ -15,20 +15,31 @@ export function useDraggableScroll() {
       isDown = true;
       slider.classList.add('cursor-grabbing');
       slider.classList.remove('cursor-grab');
+      slider.classList.remove('snap-x'); // Disable scroll snapping while dragging for smoothness
+      slider.style.scrollBehavior = 'auto'; // Disable CSS smooth scroll if any
+      Array.from(slider.children).forEach(child => child.style.pointerEvents = 'none'); // Prevent ghost image drag
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
     };
 
     const onMouseLeave = () => {
+      if (!isDown) return;
       isDown = false;
       slider.classList.add('cursor-grab');
       slider.classList.remove('cursor-grabbing');
+      slider.classList.add('snap-x'); // Restore snapping
+      slider.style.scrollBehavior = ''; 
+      Array.from(slider.children).forEach(child => child.style.pointerEvents = '');
     };
 
     const onMouseUp = () => {
+      if (!isDown) return;
       isDown = false;
       slider.classList.add('cursor-grab');
       slider.classList.remove('cursor-grabbing');
+      slider.classList.add('snap-x'); // Restore snapping
+      slider.style.scrollBehavior = '';
+      Array.from(slider.children).forEach(child => child.style.pointerEvents = '');
     };
 
     const onMouseMove = (e) => {
