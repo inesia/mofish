@@ -258,7 +258,7 @@ export default function Home({ setCurrentTab }) {
         </div>
         <div ref={sellerScrollRef} className="flex overflow-x-auto hide-scrollbar space-x-4 pb-4 snap-x pr-5">
           {dummyPremiumSellers.map(seller => (
-            <div key={seller.id} className="min-w-[130px] snap-start bg-white rounded-[24px] p-4 border border-zinc-100 flex flex-col items-center relative flex-shrink-0 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgb(0,0,0,0.06)] transition-shadow">
+            <div key={seller.id} className="w-[130px] snap-start bg-white rounded-[24px] p-4 border border-zinc-100 flex flex-col items-center relative flex-shrink-0 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgb(0,0,0,0.06)] transition-shadow">
               <span className="absolute top-0 right-0 bg-gradient-to-br from-amber-400 to-orange-500 text-white text-[8px] font-black px-2.5 py-1 rounded-bl-xl rounded-tr-[24px] shadow-sm">
                 PRO
               </span>
@@ -289,7 +289,7 @@ export default function Home({ setCurrentTab }) {
         </div>
         <div ref={saleScrollRef} className="flex overflow-x-auto hide-scrollbar space-x-4 pb-4 snap-x pr-5">
           {dummySaleItems.map(item => (
-            <div key={item.id} className="min-w-[170px] snap-start bg-white rounded-[24px] border border-zinc-100 overflow-hidden flex flex-col flex-shrink-0 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group">
+            <div key={item.id} className="w-[170px] snap-start bg-white rounded-[24px] border border-zinc-100 overflow-hidden flex flex-col flex-shrink-0 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group">
               <div className="relative h-[170px]">
                 <img src={item.imageUrl} alt={item.type} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute top-3 left-3 bg-red-500 text-white text-[9px] font-extrabold px-2.5 py-1 rounded-full shadow-md tracking-wide">SALE</div>
