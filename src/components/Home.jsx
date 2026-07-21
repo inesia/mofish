@@ -224,7 +224,7 @@ export default function Home({ setCurrentTab }) {
         </div>
         <div ref={videoScrollRef} className="flex overflow-x-auto hide-scrollbar space-x-4 pb-4 snap-x pr-5">
           {dummyVideos.map(video => (
-            <div key={video.id} className="min-w-[300px] h-[160px] snap-start relative rounded-[20px] overflow-hidden bg-zinc-900 flex-shrink-0 shadow-[0_8px_30px_rgb(0,0,0,0.08)] group">
+            <div key={video.id} className="w-[280px] h-[160px] snap-start relative rounded-[20px] overflow-hidden bg-zinc-900 flex-shrink-0 shadow-[0_8px_30px_rgb(0,0,0,0.08)] group">
               <img src={video.imageUrl} alt={video.title} className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent flex flex-col justify-between p-4">
                 <div className="text-[10px] text-yellow-400 font-extrabold bg-zinc-950/60 backdrop-blur-md w-fit px-3 py-1 rounded-full border border-white/10">
@@ -335,9 +335,9 @@ export default function Home({ setCurrentTab }) {
             <div
               key={item.id}
               onClick={() => setCurrentTab('auctionDetail')}
-              className="min-w-[300px] snap-start bg-white rounded-[28px] border border-zinc-100 overflow-hidden flex cursor-pointer flex-shrink-0 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group"
+              className="w-[280px] snap-start bg-white rounded-[28px] border border-zinc-100 overflow-hidden flex cursor-pointer flex-shrink-0 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group"
             >
-              <div className="relative w-[120px] h-full min-h-[150px] flex-shrink-0">
+              <div className="relative w-[110px] h-full min-h-[140px] flex-shrink-0">
                 <img src={item.imageUrl} alt={item.type} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute top-3 left-3 bg-orange-500 text-white text-[9px] font-extrabold px-2.5 py-1 rounded-full shadow-md tracking-wide">AUCTION</div>
               </div>
