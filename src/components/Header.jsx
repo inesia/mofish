@@ -1,12 +1,12 @@
 import React from 'react';
 import { Menu, Bell, Search, Filter, Fish } from 'lucide-react';
 
-export default function Header() {
+export default function Header({ onMenuClick, onNotifClick }) {
   return (
     <div className="sticky top-0 z-50 bg-zinc-950 border-b border-white/5">
       {/* Top Header */}
       <div className="flex items-center justify-between px-5 pt-4 pb-2">
-        <button className="p-2 -ml-2 rounded-full hover:bg-zinc-900 transition-colors">
+        <button onClick={onMenuClick} className="p-2 -ml-2 rounded-full hover:bg-zinc-900 transition-colors">
           <Menu className="w-6 h-6 text-zinc-100" />
         </button>
         
@@ -19,7 +19,7 @@ export default function Header() {
           FISH
         </div>
 
-        <button className="relative p-2 -mr-2 rounded-full hover:bg-zinc-900 transition-colors">
+        <button onClick={onNotifClick} className="relative p-2 -mr-2 rounded-full hover:bg-zinc-900 transition-colors">
           <Bell className="w-5 h-5 text-zinc-100" />
           <span className="absolute top-1 right-1 bg-red-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm shadow-red-600/50 ring-2 ring-zinc-950">
             2

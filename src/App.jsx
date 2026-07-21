@@ -7,10 +7,14 @@ import AuctionDetail from './components/AuctionDetail';
 import Jual from './components/Jual';
 import Profil from './components/Profil';
 import PageSkeleton from './components/PageSkeleton';
+import Sidebar from './components/Sidebar';
+import NotificationPanel from './components/NotificationPanel';
 
 function App() {
   const [currentTab, setCurrentTab] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isNotifOpen, setNotifOpen] = useState(false);
 
   // Simulate network fetch when changing tabs
   useEffect(() => {
@@ -32,7 +36,15 @@ function App() {
   return (
     <div className="min-h-screen bg-zinc-50 max-w-md mx-auto relative shadow-2xl overflow-hidden flex flex-col select-none">
       
-      {showHeader && !isLoading && <Header />}
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} setCurrentTab={setCurrentTab} />
+      <NotificationPanel isOpen={isNotifOpen} onClose={() => setNotifOpen(false)} />
+
+      {showHeader && !isLoading && (
+        <Header 
+          onMenuClick={() => setSidebarOpen(true)} 
+          onNotifClick={() => setNotifOpen(true)} 
+        />
+      )}
       
       <main key={currentTab} className={`flex-1 overflow-hidden flex flex-col ${!hideBottomNav ? 'pb-[60px]' : ''}`}>
         {isLoading ? (
