@@ -50,7 +50,7 @@ export default function SaleList({ setCurrentTab }) {
         <div className="grid grid-cols-2 gap-4 pb-6">
           {dummySaleItems.map(item => (
             <div key={item.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col relative">
-              <div className="relative aspect-[4/5]">
+              <div className="relative aspect-square">
                 <img src={item.imageUrl} alt={item.type} className="w-full h-full object-cover" />
                 
                 <div className="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">

@@ -22,7 +22,7 @@ function App() {
       
       {showHeader && <Header />}
       
-      <main className={`flex-1 overflow-hidden flex flex-col ${!hideBottomNav ? 'pb-[60px]' : ''}`}>
+      <main key={currentTab} className={`flex-1 overflow-hidden flex flex-col ${!hideBottomNav ? 'pb-[60px]' : ''}`}>
         {currentTab === 'home' && <Home setCurrentTab={setCurrentTab} />}
         {currentTab === 'sale' && <SaleList setCurrentTab={setCurrentTab} />}
         {currentTab === 'auctionDetail' && <AuctionDetail setCurrentTab={setCurrentTab} />}

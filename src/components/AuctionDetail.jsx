@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ChevronLeft, Share2, Heart, MessageCircle, Clock, Users, ShieldCheck, MapPin } from 'lucide-react';
-import { dummyAuctionItems } from '../mockData';
+import { dummyAuctionItems, dummyVideos } from '../mockData';
+import { useDraggableScroll } from '../hooks/useDraggableScroll';
 
 export default function AuctionDetail({ setCurrentTab }) {
+  const scrollRef = useDraggableScroll();
   // Use first auction item for demo purposes
   const item = dummyAuctionItems[0] || {
     type: 'Showa',
@@ -16,11 +18,25 @@ export default function AuctionDetail({ setCurrentTab }) {
     imageUrl: 'https://unsplash.com/photos/pw8vGbh4Bu0/download?w=800'
   };
 
+  const images = [
+    item.imageUrl,
+    dummyVideos[0]?.imageUrl || 'https://unsplash.com/photos/fwSNS_0Awq4/download?w=800',
+    dummyVideos[1]?.imageUrl || 'https://unsplash.com/photos/SjcrpttvjiE/download?w=800'
+  ];
+
   return (
     <div className="flex-1 flex flex-col bg-zinc-50 relative pb-32">
       {/* 📸 Full Bleed Hero Section */}
-      <div className="relative w-full h-[380px] bg-zinc-900">
-        <img src={item.imageUrl} alt={item.type} className="w-full h-full object-cover opacity-90" />
+      <div className="relative w-full aspect-video bg-zinc-900 overflow-hidden">
+        
+        {/* Swipeable Images Container */}
+        <div ref={scrollRef} className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full h-full">
+          {images.map((img, idx) => (
+            <div key={idx} className="w-full h-full flex-shrink-0 snap-start">
+              <img src={img} alt={`Slide ${idx+1}`} className="w-full h-full object-cover opacity-90" />
+            </div>
+          ))}
+        </div>
         
         {/* Cinematic Gradients */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-zinc-950/90"></div>

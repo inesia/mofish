@@ -78,6 +78,17 @@ function HeroCarousel() {
   const onTouchEnd = (e) => {
     if (touchStartX.current === null) return;
     const diff = touchStartX.current - e.changedTouches[0].clientX;
+    handleSwipe(diff);
+  };
+
+  const onMouseDown = (e) => { touchStartX.current = e.clientX; };
+  const onMouseUp = (e) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.clientX;
+    handleSwipe(diff);
+  };
+
+  const handleSwipe = (diff) => {
     if (Math.abs(diff) > 40) {
       goTo(diff > 0 ? current + 1 : current - 1);
       resetAuto();
@@ -88,7 +99,7 @@ function HeroCarousel() {
   const slide = heroSlides[current];
 
   return (
-    <div className="px-5 mt-2 mb-8" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <div className="px-5 mt-2 mb-8 cursor-grab active:cursor-grabbing select-none" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onMouseDown={onMouseDown} onMouseUp={onMouseUp} onMouseLeave={(e) => { if (touchStartX.current !== null) onMouseUp(e); }}>
       <div className={`relative h-[210px] w-full rounded-[32px] overflow-hidden bg-gradient-to-br ${slide.bgFrom} ${slide.bgTo} shadow-2xl shadow-black border border-white/5 group transition-colors duration-700`}>
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
